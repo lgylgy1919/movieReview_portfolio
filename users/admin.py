@@ -10,4 +10,17 @@ admin.site.register(User, UserAdmin)
 
 @admin.register(models.User)
 class CustomUserAdmin(admin.ModelAdmin):
-    pass
+    fieldsets = (
+        (
+            "Individual Information",
+            {"fields": ("username", "avatar", "birthday", "bio")},
+        ),
+        (
+            "Login Information",
+            {
+                "classes": ("collapse",),
+                "fields": ("email", "password"),
+            },
+        ),
+        ("Activity Information", {"fields": ("reviews",)}),
+    )

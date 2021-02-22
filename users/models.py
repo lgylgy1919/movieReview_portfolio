@@ -6,9 +6,12 @@ class User(AbstractUser):
 
     """ Custom User Model """
 
-    name = models.CharField(max_length=30, null=True)
+    username = models.CharField(max_length=30, unique=True)
     bio = models.TextField(max_length=100, default="Add biography")
-    age = models.CharField(max_length=3, null=True)
-    email = models.CharField(max_length=100, default="Add your email")
-    password = models.CharField(max_length=20, default="Add your password")
-    reviews = models.CharField(max_length=100, default="Reviews what you wrote")
+    birthday = models.DateField(null=True)
+    avatar = models.ImageField(null=True, blank=True)
+
+    email = models.EmailField(max_length=256)
+    password = models.CharField(max_length=256, default="Add your password")
+    # change to foreign Key
+    reviews = models.TextField(max_length=100, null=True, default=True)
