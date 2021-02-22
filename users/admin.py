@@ -10,10 +10,30 @@ admin.site.register(User, UserAdmin)
 
 @admin.register(models.User)
 class CustomUserAdmin(admin.ModelAdmin):
+    # add count_reivews
+    # username = '__str__'
+    list_display = (
+        "username",
+        "email",
+        "first_name",
+        "last_name",
+        "manageruser",
+        "reviews",
+    )
+
     fieldsets = (
         (
             "Individual Information",
-            {"fields": ("username", "avatar", "birthday", "bio")},
+            {
+                "fields": (
+                    "username",
+                    "first_name",
+                    "last_name",
+                    "avatar",
+                    "birthday",
+                    "bio",
+                )
+            },
         ),
         (
             "Login Information",
@@ -22,5 +42,5 @@ class CustomUserAdmin(admin.ModelAdmin):
                 "fields": ("email", "password"),
             },
         ),
-        ("Activity Information", {"fields": ("reviews",)}),
+        ("Activity Information", {"fields": ("reviews", "manageruser")}),
     )
