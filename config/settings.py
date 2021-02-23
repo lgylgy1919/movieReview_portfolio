@@ -40,8 +40,11 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
+    "core.apps.CoreConfig",
     "users.apps.UsersConfig",
     "movies.apps.MoviesConfig",
+    "genres.apps.GenresConfig",
+    "reviews.apps.ReviewsConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS

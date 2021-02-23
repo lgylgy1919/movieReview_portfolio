@@ -15,6 +15,6 @@ class User(AbstractUser):
 
     email = models.EmailField(max_length=256)
     password = models.CharField(max_length=256)
-    # change to foreign Key
+    # change to foreign Key,
     reviews = models.TextField(max_length=100, null=True, default=True)
     manageruser = models.BooleanField(default=False)
