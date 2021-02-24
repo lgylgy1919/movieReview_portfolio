@@ -1,3 +1,14 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView, View, UpdateView, FormView
 
-# Create your views here.
+
+class MovieDetailView(DetailView):
+    pass
+
+
+class EditMovieView(UpdateView):
+    pass
+
+
+class CreateMovieView(FormVIiew):
+    pass
