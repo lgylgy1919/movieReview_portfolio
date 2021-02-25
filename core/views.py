@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import ListView, FormView, UpdateView
+from movies.models import Movie
 
-# Create your views here.
+
+class HomeView(ListView):
+    model = Movie

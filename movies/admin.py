@@ -8,5 +8,5 @@ class CustomMovieAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "release_date",
-        "rating",
+        "total_rating",
     )

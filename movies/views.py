@@ -10,5 +10,6 @@ class EditMovieView(UpdateView):
     pass
 
 
-class CreateMovieView(FormVIiew):
-    pass
+class CreateMovieView(FormView):
+
+    template_name = "movies/movie_create.html"
