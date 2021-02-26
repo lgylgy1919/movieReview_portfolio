@@ -18,7 +18,7 @@ class CustomUserAdmin(admin.ModelAdmin):
         "first_name",
         "last_name",
         "manageruser",
-        "reviews",
+        "count_reviews",
     )
 
     fieldsets = (

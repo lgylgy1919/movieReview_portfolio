@@ -12,5 +12,9 @@ class Genre(core_models.TimeStampedModel):
     # link choiced movies to genres : we can know which movies are classified to specific genre
     movies = models.ManyToManyField("movies.Movie", related_name="movies")
 
+    def count_movies(self):
+        all_movies = 10
+        return all_movies
+
     def __str__(self):
         return self.name

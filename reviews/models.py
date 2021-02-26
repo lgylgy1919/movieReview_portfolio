@@ -13,3 +13,11 @@ class Review(core_models.TimeStampedModel):
 
     movie = models.ForeignKey("movies.Movie", on_delete=models.CASCADE)
     writer = models.ForeignKey("users.User", on_delete=models.CASCADE)
+
+    def average_rating(self):
+        average_rating = (
+            self.story + self.ost + self.visual + self.director + self.acting
+        ) / 5
+        return round(average_rating, 2)
+
+    average_rating.short_description = "AVG."

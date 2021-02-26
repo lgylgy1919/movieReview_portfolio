@@ -16,5 +16,9 @@ class User(AbstractUser):
     email = models.EmailField(max_length=256)
     password = models.CharField(max_length=256)
     # change to foreign Key,
-    reviews = models.TextField(max_length=100, null=True, default=True)
+    reviews = models.ManyToManyField("reviews.Review", related_name="user", blank=True)
     manageruser = models.BooleanField(default=False)
+
+    def count_reviews(self):
+        all_reviews = 5
+        return all_reviews

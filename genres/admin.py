@@ -6,4 +6,4 @@ from . import models
 class GenreAdmin(admin.ModelAdmin):
 
     # add count_movies
-    list_display = ("name",)
+    list_display = ("name", "count_movies")
