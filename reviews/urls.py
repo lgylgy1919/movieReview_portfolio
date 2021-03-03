@@ -3,4 +3,7 @@ from . import views
 
 app_name = "reviews"
 
-urlpatterns = [path("create/", views.CreateMovieReview.as_view(), name="movieReview")]
+urlpatterns = [
+    # login reuqired
+    path("create/", views.CreateMovieReview.as_view(), name="movieReview")
+]

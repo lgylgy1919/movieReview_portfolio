@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, View, UpdateView, FormView
-from . import models
+from . import models, forms
 
 
 class HomeView(ListView):
@@ -8,13 +8,16 @@ class HomeView(ListView):
 
 
 class MovieDetailView(DetailView):
-    pass
+    model = models.Movie
+    template_name = "movies/movie_detail.html"
 
 
 class EditMovieView(UpdateView):
-    pass
+    model = models.Movie
+    template_name = "movies/movie_edit.html"
 
 
 class CreateMovieView(FormView):
 
+    form_class = forms.CreateMovieForm
     template_name = "movies/movie_create.html"
