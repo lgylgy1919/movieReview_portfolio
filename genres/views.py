@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import FormView
+from . import models, forms
 
 
 class Genre(FormView):
@@ -7,4 +8,5 @@ class Genre(FormView):
 
 
 class CreateGenreView(FormView):
-    pass
+    form_class = forms.CreateGenreForm
+    template_name = "genres/genre_create.html"

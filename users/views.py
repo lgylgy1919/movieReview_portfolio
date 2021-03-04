@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.views.generic import DetailView, UpdateView, FormView
-from . import models
+from . import models, forms
+from django.contrib import messages
+from django.contrib.auth import login, logout
 
 
 class UserDetialView(DetailView):
@@ -16,12 +18,16 @@ class EditProfileView(UpdateView):
 
 
 class LoginView(FormView):
-    pass
+    template_name = "users/login.html"
+    form_class = forms.LoginFrom
 
 
-class LogOutView(FormView):
-    pass
+def log_out(request):
+    messages.info(request, f"See you later")
+    logout(request)
+    return redirect(reverse("core:home"))
 
 
 class SignUpView(FormView):
-    pass
+    template_name = "users/signup.html"
+    form_class = forms.SignUpForm
