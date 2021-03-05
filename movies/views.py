@@ -21,3 +21,9 @@ class CreateMovieView(FormView):
 
     form_class = forms.CreateMovieForm
     template_name = "movies/movie_create.html"
+
+
+class SearchView(View):
+    def get(self, request):
+        form = request.GET
+        return render(request, "search.html", {"form": form})
