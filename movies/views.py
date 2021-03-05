@@ -25,5 +25,5 @@ class CreateMovieView(FormView):
 
 class SearchView(View):
     def get(self, request):
-        form = request.GET
+        form = request.GET["searchtitle"]
         return render(request, "search.html", {"form": form})
