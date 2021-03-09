@@ -1,0 +1,10 @@
+<a href="{% url 'movies:movieDetail' movie.pk %}">
+    <ul>
+        <li>{{movie.title}}</li>
+        <li>{{movie.genre}}</li>
+        <li>{{movie.director}}</li>
+        <li>{{movie.release_date}}</li>
+        <li>{{movie.total_rating}}</li>
+            
+    </ul>
+</a>

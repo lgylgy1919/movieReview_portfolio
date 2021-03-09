@@ -5,6 +5,7 @@ from . import models, forms
 
 class HomeView(ListView):
     model = models.Movie
+    context_object_name = "movies"
 
 
 class MovieDetailView(DetailView):

@@ -3,4 +3,15 @@
 
 {% block content%}
     <h2> It's movie_detail html</h2>
+    <h3>title: {{movie.title}}</h3>
+    <h3>release date : {{movie.release_date}}</h3>
+    <h3>director : {{movie.director}}</h3>
+    <h3>cast : {{movie.cast}}</h3>
+    <h3>synopsis : {{movie.synopsis}}</h3>
+    <h3>genre : {{movie.genre.name}}</h3>
+    <h3>total_rating : {{movie.reviews.average_rating}}</h3>
+    <h3>reivews :  {{movie.reviews.review}}</h3>
+
+
+    <a href="{% url 'reviews:movieReview' %}""> enroll new reviews</a>
 {% endblock content%}
