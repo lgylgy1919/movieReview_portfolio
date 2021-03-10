@@ -12,5 +12,4 @@ class CreateMovieForm(forms.ModelForm):
             "director",
             "cast",
             "synopsis",
-            "reviews",
         )

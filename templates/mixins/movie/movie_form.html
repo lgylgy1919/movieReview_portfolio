@@ -1,0 +1,5 @@
+<div>
+    {% for field in form %}
+        {% include 'mixins/movie/movie_input.html' with field=field %}
+    {% endfor %}
+</div>

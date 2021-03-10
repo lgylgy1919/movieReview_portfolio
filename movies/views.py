@@ -23,6 +23,8 @@ class CreateMovieView(FormView):
     form_class = forms.CreateMovieForm
     template_name = "movies/movie_create.html"
 
+    # create def form_valid(self,form)
+
 
 class SearchView(View):
     def get(self, request):
