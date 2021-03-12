@@ -5,5 +5,5 @@ app_name = "reviews"
 
 urlpatterns = [
     # login reuqired
-    path("create/", views.CreateReviewView.as_view(), name="movieReview")
+    path("create/<int:movie>", views.create_review, name="movieReview")
 ]
