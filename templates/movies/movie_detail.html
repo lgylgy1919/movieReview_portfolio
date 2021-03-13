@@ -13,5 +13,5 @@
     <h3>reivews :  {{movie.reviews.review}}</h3>
 
 
-    <a href="{% url 'reviews:movieReview' %}""> enroll new reviews</a>
+    <a href="{% url 'reviews:movieReview' movie.pk%}""> enroll new reviews</a>
 {% endblock content%}
