@@ -1,5 +1,9 @@
-<div>
+<form method="POST" encytype="multipart/form-data">
+    {% csrf_token %}
+
     {% for field in form %}
         {% include 'mixins/movie/movie_input.html' with field=field %}
     {% endfor %}
-</div>
+
+    <button>{{cta}}</button>
+</form>

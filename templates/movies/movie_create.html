@@ -4,6 +4,8 @@
 
 {% block content%}
     <h2> it's movie_create html </h2>
-    {% include 'mixins/movie/movie_form.html' with form=form %}
+    
+        {% include 'mixins/movie/movie_form.html' with form=form cta="Create Movie" %}
 
+    
 {% endblock content%}

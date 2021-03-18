@@ -10,8 +10,9 @@
     <h3>synopsis : {{movie.synopsis}}</h3>
     <h3>genre : {{movie.genre.name}}</h3>
     <h3>total_rating : {{movie.reviews.average_rating}}</h3>
-    <h3>reivews :  {{movie.reviews.review}}</h3>
+    <h3>reviews :  {{movie.reviews.review}}</h3>
 
 
-    <a href="{% url 'reviews:movieReview' movie.pk%}""> enroll new reviews</a>
+    <a href="{% url 'movies:movieEdit' movie.pk %}"> Edit this movie</a>
+    <a href="{% url 'reviews:movieReview' movie.pk%}"> enroll new reviews</a>
 {% endblock content%}
