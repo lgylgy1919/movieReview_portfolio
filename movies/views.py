@@ -32,6 +32,7 @@ class CreateMovieView(FormView):
     form_class = forms.CreateMovieForm
     template_name = "movies/movie_create.html"
 
+    """
     def form_valid(self, form):
         movie = form.save()
         movie.host = self.request.user
@@ -39,6 +40,7 @@ class CreateMovieView(FormView):
         form.save_m2m()
         messages.success(self.request, "Movie Uploaded")
         return redirect(reverse("movies:detail", kwargs={"pk": movie.pk}))
+    """
 
 
 class SearchView(View):
