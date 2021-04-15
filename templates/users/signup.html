@@ -3,4 +3,12 @@
 
 {% block content%}
     <h2> It's Sign Up html</h2>
+
+
+    <div>
+
+        {% include 'mixins/auth/auth_form.html' with form=form cta="Sign up" %}
+
+    </div>
+
 {% endblock content%}

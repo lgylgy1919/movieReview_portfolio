@@ -10,7 +10,6 @@ class CreateReviewView(FormView):
     template_name = "reviews/review_create.html"
 
 
-"""
 def enroll_review(request, movie):
     if request.method == "POST":
         movie = movie_models.Movie.objects.get_or_none(pk=movie)
@@ -23,4 +22,3 @@ def enroll_review(request, movie):
             review.save()
             messages.success(request, "New Movie reviewed")
             return redirect(reverse("movie:detail", kwargs={"pk": movie.pk}))
-"""
