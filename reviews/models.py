@@ -9,9 +9,11 @@ class Review(core_models.TimeStampedModel):
     visual = models.IntegerField()
     director = models.IntegerField()
     acting = models.IntegerField()
-    review = models.TextField()
+    comment = models.TextField()
 
-    movie = models.ForeignKey("movies.Movie", on_delete=models.CASCADE)
+    movie = models.ForeignKey(
+        "movies.Movie", related_name="reviews", on_delete=models.CASCADE
+    )
     writer = models.ForeignKey("users.User", on_delete=models.CASCADE)
 
     def average_rating(self):

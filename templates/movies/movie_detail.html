@@ -9,13 +9,15 @@
     <h3>director : {{movie.director}}</h3>
     <h3>cast : {{movie.cast}}</h3>
     <h3>synopsis : {{movie.synopsis}}</h3>
+    <h3>genre : {{movie.genre.all}}</h3>
+    <h3>total_rating : {{movie.total_rating}}</h3>
 
-    <h3>genre : {{movie.genre.genre}}</h3>
-    <h3>reviews :  {{movie.reviews.review}}</h3>
-    
-    <h3>total_rating : {{movie.reviews.total_rating}}</h3>
-    
+    {% for comment in movie.comment %}
+        <h3>  {{comment}} </h3> 
+    {% endfor %}        
 
+    <h3>Reviews</h3>
+    
 
     <a href="{% url 'movies:movieEdit' movie.pk %}"> Edit this movie</a>
     <a href="{% url 'reviews:movieReview' movie.pk%}"> Create new reviews</a>

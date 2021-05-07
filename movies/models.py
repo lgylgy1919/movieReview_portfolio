@@ -1,7 +1,8 @@
 from django.db import models
 from core import models as core_models
+from reviews import models as review_models
 
-# Create your models here
+
 class Movie(core_models.TimeStampedModel):
 
     """ Movie model Definition """
@@ -18,9 +19,16 @@ class Movie(core_models.TimeStampedModel):
         all_rating = 0
         if len(all_reviews) > 0:
             for review in all_reviews:
-                all_rating += review.rating_average()
+                all_rating += review.average_rating()
             return round(all_rating / len(all_reviews), 2)
         return 0
+
+    def comment(self):
+        all_reviews = self.reviews.all()
+        all_comment = []
+        for review in all_reviews:
+            all_comment.append(review.comment)
+        return all_comment
 
     def __str__(self):
         return self.title

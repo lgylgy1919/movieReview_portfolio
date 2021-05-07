@@ -18,7 +18,7 @@ class CreateReviewForm(forms.ModelForm):
             "visual",
             "director",
             "acting",
-            "review",
+            "comment",
             "movie",
             "writer",
         )
