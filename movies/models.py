@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from core import models as core_models
 from reviews import models as review_models
 
@@ -32,3 +33,6 @@ class Movie(core_models.TimeStampedModel):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("movies:movieDetail", kwargs={"pk": self.pk})

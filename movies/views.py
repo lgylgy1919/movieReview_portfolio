@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.views.generic import ListView, DetailView, View, UpdateView, FormView
 from . import models, forms
 from django.contrib import messages
+from users import mixins as user_mixins
 
 
 class HomeView(ListView):
@@ -25,22 +26,25 @@ class EditMovieView(UpdateView):
         "cast",
         "synopsis",
     }
+    """
+    def get_object(self, queryset=None):
+        movie = super().get_object(queryset=queryset)
+        return movie
+    """
 
 
-class CreateMovieView(FormView):
+class CreateMovieView(user_mixins.LoggedInOnlyView, FormView):
 
     form_class = forms.CreateMovieForm
     template_name = "movies/movie_create.html"
 
-    """
     def form_valid(self, form):
         movie = form.save()
         movie.host = self.request.user
         movie.save()
         form.save_m2m()
         messages.success(self.request, "Movie Uploaded")
-        return redirect(reverse("movies:detail", kwargs={"pk": movie.pk}))
-    """
+        return redirect(reverse("movies:movieDetail", kwargs={"pk": movie.pk}))
 
 
 class SearchView(View):

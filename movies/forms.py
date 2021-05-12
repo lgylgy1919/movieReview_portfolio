@@ -13,3 +13,7 @@ class CreateMovieForm(forms.ModelForm):
             "cast",
             "synopsis",
         )
+
+    def save(self, *args, **kwargs):
+        movie = super().save(commit=False)
+        return movie

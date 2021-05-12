@@ -3,9 +3,8 @@
 
 {% block content%}
     <h2> It's movie_edit html</h2>
-    <form method="post" >
         {% csrf_token %}
-        {% include 'mixins/movie/movie_form.html' %}
-        <button>Edit Movie</button>
+        {% include 'mixins/movie/movie_form.html' with form=form cta="Update Movie" %}
+
     </form>
     {% endblock content%}
