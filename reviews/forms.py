@@ -9,6 +9,7 @@ class CreateReviewForm(forms.ModelForm):
     visual = forms.IntegerField(max_value=5, min_value=1)
     director = forms.IntegerField(max_value=5, min_value=1)
     acting = forms.IntegerField(max_value=5, min_value=1)
+    comment = forms.TextInput()
 
     class Meta:
         model = models.Review
@@ -19,6 +20,8 @@ class CreateReviewForm(forms.ModelForm):
             "director",
             "acting",
             "comment",
-            "movie",
-            "writer",
         )
+
+    def save(self):
+        review = super().save(commit=False)
+        return review

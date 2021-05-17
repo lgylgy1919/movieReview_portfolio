@@ -4,6 +4,6 @@ from . import views
 app_name = "reviews"
 
 urlpatterns = [
-    # login required
-    path("create/<int:movie>/", views.CreateReview.as_view(), name="movieReview")
+    path("create/<int:movie>/", views.createReviewView.as_view(), name="createReview"),
+    path("upload/<int:movie>/", views.upload_review, name="uploadReview"),
 ]

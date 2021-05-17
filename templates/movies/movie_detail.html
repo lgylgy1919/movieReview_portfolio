@@ -24,5 +24,5 @@
     
 
     <a href="{% url 'movies:movieEdit' movie.pk %}"> Edit this movie</a>
-    <a href="{% url 'reviews:movieReview' movie.pk%}"> Create new reviews</a>
+    <a href="{% url 'reviews:createReview' movie.pk%}"> Write reviews</a>
 {% endblock content%}

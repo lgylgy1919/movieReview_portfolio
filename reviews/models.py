@@ -14,7 +14,7 @@ class Review(core_models.TimeStampedModel):
     movie = models.ForeignKey(
         "movies.Movie", related_name="reviews", on_delete=models.CASCADE
     )
-    writer = models.ForeignKey("users.User", on_delete=models.CASCADE)
+    writer = models.ForeignKey("users.User", on_delete=models.CASCADE, null=True)
 
     def average_rating(self):
         average_rating = (

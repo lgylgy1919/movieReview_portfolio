@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, View, UpdateView, FormVie
 from . import models, forms
 from django.contrib import messages
 from users import mixins as user_mixins
+from reviews import forms as review_form
 
 
 class HomeView(ListView):
@@ -26,11 +27,6 @@ class EditMovieView(UpdateView):
         "cast",
         "synopsis",
     }
-    """
-    def get_object(self, queryset=None):
-        movie = super().get_object(queryset=queryset)
-        return movie
-    """
 
 
 class CreateMovieView(user_mixins.LoggedInOnlyView, FormView):
