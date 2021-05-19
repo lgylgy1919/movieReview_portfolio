@@ -31,7 +31,6 @@ class CustomUserAdmin(admin.ModelAdmin):
                     "last_name",
                     "avatar",
                     "birthday",
-                    "bio",
                 )
             },
         ),

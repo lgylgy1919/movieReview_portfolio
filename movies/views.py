@@ -30,7 +30,6 @@ class EditMovieView(UpdateView):
 
 
 class CreateMovieView(user_mixins.LoggedInOnlyView, FormView):
-
     form_class = forms.CreateMovieForm
     template_name = "movies/movie_create.html"
 

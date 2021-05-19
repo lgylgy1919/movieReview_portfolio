@@ -1,5 +1,7 @@
 <li class="nav_link"><a href="{% url 'core:home' %}">Home </a></li>
-<li class="nav_link"><a href="{% url 'movies:movieCreate' %}">Create Movie</a></li>
+{% if user.is_authenticated %}
+    <li class="nav_link"><a href="{% url 'movies:movieCreate' %}">Create Movie</a></li>
+{% endif %}
 
 {% block search-bar %}
             <form method="get" action="{% url "movies:search" %}">
@@ -11,9 +13,12 @@
 {% endblock search-bar %}
 
 <ul>
-        <li class="nav_link"><a href="{% url 'users:userProfile' pk=3 %}">Profile</a></li>
-        <li class="nav_link"><a href="{% url 'users:logout' %}">Log out</a></li>
-        <li class="nav_link"><a href="{% url 'users:login' %}">Log in</a></li>
-        <li class="nav_link"><a href="{% url 'users:signup' %}">Sign up</a></li>   
+        {% if user.is_authenticated %}
+            <li class="nav_link"><a href="{% url 'users:userProfile' pk=3 %}">Profile</a></li>
+            <li class="nav_link"><a href="{% url 'users:logout' %}">Log out</a></li>
+        {% else %}
+            <li class="nav_link"><a href="{% url 'users:login' %}">Log in</a></li>
+            <li class="nav_link"><a href="{% url 'users:signup' %}">Sign up</a></li>   
+        {% endif %}
 </ul>
 
