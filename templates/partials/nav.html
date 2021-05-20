@@ -14,7 +14,7 @@
 
 <ul>
         {% if user.is_authenticated %}
-            <li class="nav_link"><a href="{% url 'users:userProfile' pk=3 %}">Profile</a></li>
+            <li class="nav_link"><a href="{% url 'users:userProfile' pk=user.pk %}">Profile</a></li>
             <li class="nav_link"><a href="{% url 'users:logout' %}">Log out</a></li>
         {% else %}
             <li class="nav_link"><a href="{% url 'users:login' %}">Log in</a></li>

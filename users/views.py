@@ -45,7 +45,8 @@ def log_out(request):
     return redirect(reverse("core:home"))
 
 
-class SignUpView(mixins.LoggedOutOnlyView, FormView):
+class SignUpView(FormView):
+
     template_name = "users/signup.html"
     form_class = forms.SignUpForm
     success_url = reverse_lazy("core:home")
@@ -55,8 +56,13 @@ class SignUpView(mixins.LoggedOutOnlyView, FormView):
         email = form.cleaned_data.get("email")
         password = form.cleaned_data.get("password")
         user = authenticate(self.request, username=email, password=password)
-        print(email, password, user)
         if user is not None:
             login(self.request, user)
         # user.verify_email()
         return super().form_valid(form)
+
+
+class UserProfileView(DetailView):
+
+    model = models.User
+    context_object_name = "user_obj"

@@ -30,7 +30,7 @@ class SignUpForm(forms.ModelForm):
     password1 = forms.CharField(
         widget=forms.PasswordInput(attrs={"placeholder": "Confirm Password"})
     )
-
+    """
     def clean_email(self):
         email = self.cleaned_data.get("email")
         try:
@@ -49,6 +49,7 @@ class SignUpForm(forms.ModelForm):
             raise forms.ValidationError("Password confirmation does not match")
         else:
             return password
+    """
 
     def save(self, *args, **kwargs):
         user = super().save(commit=False)

@@ -32,6 +32,7 @@ class User(AbstractUser):
     def get_absolute_url(self):
         return reverse("users:profile", kwargs={"pk": self.pk})
 
+    """
     def verify_email(self):
         if self.email_verified is False:
             secret = uuid.uuid4().hex[:20]
@@ -48,4 +49,5 @@ class User(AbstractUser):
                 html_message=html_message,
             )
             self.save()
-        return
+            return
+    """
