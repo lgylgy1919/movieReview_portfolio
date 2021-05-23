@@ -19,6 +19,13 @@
 
     {% for comment in movie.comment %}
         <h3>  {{comment}} </h3> 
+    {% endfor %}  
+
+    {% for review in movie.review %}
+        <h3>  {{review.comment}} </h3> 
+        <h3>{{review.pk}}</h3>
+        <a href="{% url 'reviews:editReview' review.pk %}">Edit this review</a>
+        
     {% endfor %}        
 
     

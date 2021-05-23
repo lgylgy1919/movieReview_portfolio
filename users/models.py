@@ -30,7 +30,7 @@ class User(AbstractUser):
     # objects = core_managers.CustomModelManager()
 
     def get_absolute_url(self):
-        return reverse("users:profile", kwargs={"pk": self.pk})
+        return reverse("users:userProfile", kwargs={"pk": self.pk})
 
     """
     def verify_email(self):

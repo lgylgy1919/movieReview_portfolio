@@ -1,5 +1,25 @@
 {% extends 'base.html' %}
 {% block page_title %}User Profile{% endblock page_title %}
 {% block content %}
-    <h1>it's {{user_obj.first_name}}'sprofile html</h1>
+    <h1>it's {{user.last_name}}'s profile html</h1>
+    <div>
+        {{user.first_name}}
+        {{user.last_name}}
+        {{user.birthday}}
+
+    </div>
+    <div>
+        {% for review in user.reviews.all %}
+            {{review.movie}}
+            {{review.comment}}
+        {% endfor %}
+        
+        {% for a in "review" %}
+            {{ a }}
+        {% endfor %}
+    </div>
+    
+    <li class="nav_link"> 
+        <a href="{% url 'users:editProfile' pk=user.pk %}"> Edit Profile</a>
+    </li>
 {% endblock content%}

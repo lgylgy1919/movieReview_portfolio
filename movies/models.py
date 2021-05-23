@@ -31,6 +31,10 @@ class Movie(core_models.TimeStampedModel):
             all_comment.append(review.comment)
         return all_comment
 
+    def review(self):
+        all_reviews = self.reviews.all()
+        return all_reviews
+
     def __str__(self):
         return self.title
 
