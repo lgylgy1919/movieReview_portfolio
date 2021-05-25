@@ -17,19 +17,18 @@
     <h3>Reviews</h3>
     <h3>total_rating : {{movie.total_rating}}</h3>
 
-    {% for comment in movie.comment %}
-        <h3>  {{comment}} </h3> 
-    {% endfor %}  
 
     {% for review in movie.review %}
-        <h3>  {{review.comment}} </h3> 
-        <h3>{{review.pk}}</h3>
-        <a href="{% url 'reviews:editReview' review.pk %}">Edit this review</a>
-        
-    {% endfor %}        
+        <h3>{{review.comment}} </h3> 
+        <h5>{{review.writer.first_name}}
+            <a href="{% url 'reviews:detailReview' review.pk %}">see detail review</a>
+        </h5>
+    {% endfor %}
 
     
 
-    <a href="{% url 'movies:movieEdit' movie.pk %}"> Edit this movie</a>
-    <a href="{% url 'reviews:createReview' movie.pk%}"> Write reviews</a>
+    <div>
+        <a href="{% url 'movies:movieEdit' movie.pk %}"> Edit this movie</a>
+        <a href="{% url 'reviews:createReview' movie.pk%}"> Write reviews</a>
+    </div>
 {% endblock content%}

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block page_title %}Movie Edit{% endblock page_title %}
-
+{% block page_title %}Review Edit{% endblock page_title %}
+    
 {% block content%}
-    <h2> It's Review_edit html</h2>
+    <h2> It's review_edit html</h2>
         {% csrf_token %}
-        {% include 'mixins/movie/review_form.html' with form=form cta="Edit Review" %}
-
-    </form>
-    {% endblock content%}
+        {% include 'mixins/review/review_form.html' with cta="Update Review" %}
+    
+{% endblock content%}
+    

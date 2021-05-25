@@ -1,11 +1,10 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, reverse
-from django.views.generic import FormView, View, UpdateView
+from django.views.generic import FormView, View, UpdateView, DetailView
 from movies import models as movie_models
 from . import models, forms
 from reviews import forms as review_form
-
-# 해당 영화의 pk를 가져와야 한다. 어떻게???
+from django.http import Http404
 
 
 class createReviewView(View):
@@ -36,7 +35,18 @@ def upload_review(request, movie):
     return redirect(reverse("core:home"))
 
 
+class ReviewDetailView(View):
+    def get(self, *args, **kwargs):
+        pk = kwargs["review"]
+        review = models.Review.objects.get(pk=pk)
+        return render(self.request, "reviews/review_detail.html", {"review": review})
+
+
 class EditReviewView(UpdateView):
     model = models.Review
     template_name = "reviews/review_edit.html"
     fields = {"story", "ost", "visual", "director", "acting", "comment"}
+
+    def get_object(self, queryset=None):
+        review = super().get_object(queryset=queryset)
+        return review

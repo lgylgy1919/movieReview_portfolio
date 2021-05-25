@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 from core import models as core_models
-from reviews import models as review_models
 
 
 class Movie(core_models.TimeStampedModel):
@@ -23,13 +22,6 @@ class Movie(core_models.TimeStampedModel):
                 all_rating += review.average_rating()
             return round(all_rating / len(all_reviews), 2)
         return 0
-
-    def comment(self):
-        all_reviews = self.reviews.all()
-        all_comment = []
-        for review in all_reviews:
-            all_comment.append(review.comment)
-        return all_comment
 
     def review(self):
         all_reviews = self.reviews.all()
