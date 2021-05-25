@@ -45,8 +45,20 @@ class ReviewDetailView(View):
 class EditReviewView(UpdateView):
     model = models.Review
     template_name = "reviews/review_edit.html"
-    fields = {"story", "ost", "visual", "director", "acting", "comment"}
+    pk_url_kwarg = "review"
+    fields = {
+        "story",
+        "ost",
+        "visual",
+        "director",
+        "acting",
+        "comment",
+    }
 
     def get_object(self, queryset=None):
         review = super().get_object(queryset=queryset)
         return review
+
+    def get_success_url(self):
+        review_pk = self.kwargs.get("review")
+        return reverse("reviews:detailReview", kwargs={"review": review_pk})

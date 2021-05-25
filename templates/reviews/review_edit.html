@@ -2,9 +2,14 @@
 {% block page_title %}Review Edit{% endblock page_title %}
     
 {% block content%}
-    <h2> It's review_edit html</h2>
-        {% csrf_token %}
-        {% include 'mixins/review/review_form.html' with cta="Update Review" %}
+
+<form  method="POST" encytype="multipart/form-data">
+    {% csrf_token %}
     
+    {% for field in form %}
+    {% include 'mixins/review/review_input.html' with field=field %}
+    {% endfor %}
+    
+    <button>Edit this review</button>
+</form>
 {% endblock content%}
-    
