@@ -19,12 +19,10 @@ class User(AbstractUser):
     birthday = models.DateField(null=True, blank=True)
     avatar = models.ImageField(null=True, blank=True)
     password = models.CharField(max_length=256)
-    # change to foreign Key,
-    reviews = models.ManyToManyField("reviews.Review", related_name="user", blank=True)
     manageruser = models.BooleanField(default=False)
 
     def count_reviews(self):
-        all_reviews = 5
+        all_reviews = self.reviews.all()
         return all_reviews
 
     # objects = core_managers.CustomModelManager()

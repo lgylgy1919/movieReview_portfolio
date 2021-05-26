@@ -7,10 +7,10 @@ from django.urls import reverse_lazy
 from . import mixins
 
 
-class UserDetialView(DetailView):
+class UserProfileView(DetailView):
+
     model = models.User
-    # only login
-    template_name = "users/user_profile.html"
+    context_object_name = "user_obj"
 
 
 class EditProfileView(UpdateView):
@@ -45,7 +45,7 @@ def log_out(request):
     return redirect(reverse("core:home"))
 
 
-class SignUpView(FormView):
+class SignUpView(mixins.LoggedOutOnlyView, FormView):
 
     template_name = "users/signup.html"
     form_class = forms.SignUpForm
@@ -60,9 +60,3 @@ class SignUpView(FormView):
             login(self.request, user)
         # user.verify_email()
         return super().form_valid(form)
-
-
-class UserProfileView(DetailView):
-
-    model = models.User
-    context_object_name = "user_obj"

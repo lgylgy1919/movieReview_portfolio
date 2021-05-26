@@ -1,21 +1,23 @@
 {% extends 'base.html' %}
 {% block page_title %}User Profile{% endblock page_title %}
 {% block content %}
-    <h1>it's {{user.last_name}}'s profile html</h1>
+    <h1>it's {{user.first_name}}'s profile html</h1>
     <div>
+        {{user.email}}
         {{user.first_name}}
         {{user.last_name}}
-        {{user.birthday}}
+        {% if user.birthday %}
+            {{user.birthday}}
+        {% endif %}
 
     </div>
     <div>
-        {% for review in user.reviews.all %}
-            {{review.movie}}
-            {{review.comment}}
-        {% endfor %}
-        
-        {% for a in "review" %}
-            {{ a }}
+        <h3>It's {{user.first_name}}'s Review </h3>
+        {% for reveiw in reviews.all %}
+            {% if review.writer == user.email%}
+                {{review.movie}}
+                {{review.comment}}
+            {% endif %}
         {% endfor %}
     </div>
     

@@ -28,7 +28,13 @@
     
 
     <div>
-        <a href="{% url 'movies:movieEdit' movie.pk %}"> Edit this movie</a>
-        <a href="{% url 'reviews:createReview' movie.pk%}"> Write reviews</a>
+        {% if user.is_authenticated %}
+            
+            {% if user.manageruser %}
+                <a href="{% url 'movies:movieEdit' movie.pk %}"> Edit this movie</a>
+            {% endif %}
+            
+            <a href="{% url 'reviews:createReview' movie.pk%}"> Write reviews</a>
+        {% endif %}
     </div>
 {% endblock content%}

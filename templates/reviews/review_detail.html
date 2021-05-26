@@ -2,6 +2,7 @@
 {% block page_title %}Review Detail{% endblock page_title %}
 
 {% block content%}
+    <a href="{% url 'movies:movieDetail' review.movie.pk %}">Back to Movie</a>
     <h2> {{review.writer.first_name}}'s {{review.movie}} Review </h2>
 
     <h3>story {{review.story}}</h3>
