@@ -2,26 +2,32 @@
 {% block page_title %}User Profile{% endblock page_title %}
 {% block content %}
     <h1>it's {{user.first_name}}'s profile html</h1>
+    <h3>Profile Photo </h3>
     <div>
-        {{user.email}}
-        {{user.first_name}}
-        {{user.last_name}}
+        <h4>email : {{user.email}}</h4>
+        <h4>first name : {{user.first_name}}</h4>
+        <h4>last name : {{user.last_name}}</h4>
+        <h4>
         {% if user.birthday %}
+        birthday : 
             {{user.birthday}}
         {% endif %}
-
+        </h4>
     </div>
     <div>
         <h3>It's {{user.first_name}}'s Review </h3>
-        {% for reveiw in reviews.all %}
-            {% if review.writer == user.email%}
-                {{review.movie}}
-                {{review.comment}}
+
+        {% for review in reviews %}
+            {% if user.pk == review.writer.pk %}
+                <h2>{{review.movie}} : {{review.comment}}</h2>
             {% endif %}
         {% endfor %}
     </div>
     
     <li class="nav_link"> 
         <a href="{% url 'users:editProfile' pk=user.pk %}"> Edit Profile</a>
+    </li>
+    <li class="nav_link">
+        <a href="{% url 'users:changePassword' pk=user.pk %}"> Change Password</a>
     </li>
 {% endblock content%}
