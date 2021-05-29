@@ -20,11 +20,11 @@ class User(AbstractUser):
     avatar = models.ImageField(null=True, blank=True)
     password = models.CharField(max_length=256)
     manageruser = models.BooleanField(default=False)
-
+    """
     def count_reviews(self):
         all_reviews = self.reviews.all()
         return all_reviews
-
+    """
     # objects = core_managers.CustomModelManager()
 
     def get_absolute_url(self):
