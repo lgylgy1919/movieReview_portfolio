@@ -3,6 +3,19 @@ from django.urls import reverse
 from core import models as core_models
 
 
+class AbstarctItem(core_models.TimeStampedModel):
+
+    """ Abstract Item """
+
+    name = models.CharField(max_length=80)
+
+    class Meata:
+        abstract = True
+
+    def __str__(self):
+        return self.name
+
+
 class Movie(core_models.TimeStampedModel):
 
     """ Movie model Definition """

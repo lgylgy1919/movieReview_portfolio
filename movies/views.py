@@ -44,5 +44,7 @@ class CreateMovieView(FormView):
 
 class SearchView(View):
     def get(self, request):
-        form = request.GET["searchtitle"]
-        return render(request, "search.html", {"form": form})
+        title = request.GET["searchtitle"]
+        # qs = models.Movie.objects.filter(**{"title": title}).order_by("-created")
+        qs = models.Movie.objects.filter(title__icontains=title)
+        return render(request, "search.html", {"movies": qs})
