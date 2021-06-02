@@ -23,7 +23,7 @@ class UserProfileView(DetailView):
 class EditProfileView(UpdateView):
     model = models.User
     template_name = "users/profile_edit.html"
-    fields = {"first_name", "last_name"}
+    fields = {"first_name", "last_name", "avatar"}
 
 
 class LoginView(mixins.LoggedOutOnlyView, FormView):

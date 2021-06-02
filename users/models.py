@@ -3,7 +3,6 @@ from django.db import models
 from core import managers as core_managers
 from django.shortcuts import reverse
 
-
 import uuid
 from django.conf import settings
 from django.core.mail import send_mail
@@ -11,13 +10,12 @@ from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 
 
-# User model
 class User(AbstractUser):
 
     """ Custom User Model """
 
     birthday = models.DateField(null=True, blank=True)
-    avatar = models.ImageField(null=True, blank=True)
+    avatar = models.ImageField(upload_to="avatar", blank=True)
     password = models.CharField(max_length=256)
     manageruser = models.BooleanField(default=False)
     """
