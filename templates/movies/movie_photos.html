@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    {{movie.title}}'s photos
+{% endblock%}
+
+{% block content %}
+    <h3>
+        <a href="{% url 'movies:add-photo' movie.pk %}">Upload Photo</a>
+    </h3>
+
+    
+    {% for photo in movie.photos.all %}
+        <img src="{{main_photo}}">
+        <span>{{photo.caption}}</span>
+        <a href="{% url 'movies:edit-photo' movie.pk photo.pk %}">Edit</a>
+        <a href="{% url 'movies:delete-photo' movie.pk photo.pk}">Delete</a>
+    {% endfor %}
+
+    <h3>
+        <a href="{% url 'movies:movieEdit' movie.pk %}"> Back to edit Movie</a>
+    </h3>
+
+{% endblock content %}

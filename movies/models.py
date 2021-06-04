@@ -9,11 +9,23 @@ class AbstarctItem(core_models.TimeStampedModel):
 
     name = models.CharField(max_length=80)
 
-    class Meata:
+    class Meta:
         abstract = True
 
     def __str__(self):
         return self.name
+
+
+class Photo(core_models.TimeStampedModel):
+
+    """ Photo model Definition """
+
+    caption = models.CharField(max_length=80)
+    files = models.ImageField(upload_to="movie_photos", blank=True)
+    movie = models.ForeignKey("Movie", related_name="photos", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.caption
 
 
 class Movie(core_models.TimeStampedModel):
@@ -45,3 +57,14 @@ class Movie(core_models.TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse("movies:movieDetail", kwargs={"pk": self.pk})
+
+    def main_photo(self):
+        try:
+            (photo,) = self.photos.all()[:1]
+            return photo.files.url
+        except ValueError:
+            return None
+
+    def sub_photo(self):
+        photos = self.photos.all()[1:]
+        return photos

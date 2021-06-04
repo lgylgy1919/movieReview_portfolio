@@ -13,7 +13,7 @@
             {{user.birthday}}
         {% endif %}
         </h4>
-        <img src="{{user.avatar.url}}" >
+        {% include 'mixins/user_avatar.html' with user=user_obj %}
             
     </div>
     <div>

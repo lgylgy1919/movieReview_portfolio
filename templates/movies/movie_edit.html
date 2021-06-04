@@ -6,4 +6,6 @@
         {% csrf_token %}
         {% include 'mixins/movie/movie_form.html' with  cta="Update Movie" %}
 
+        <a href="{% url 'movies:photos' movie.pk %}">Edit Photos</a>
+
 {% endblock content%}

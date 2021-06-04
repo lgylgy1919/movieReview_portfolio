@@ -1,0 +1,9 @@
+{% extends 'base.html'%}
+
+{% block page_title %}
+Upload Photo
+{% endblock page_title %}
+
+{% block content %}
+    {% include 'mixins/movie/movie_form.html' with form=form cta="Upload photo" %}
+{% endblock content %}
