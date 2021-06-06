@@ -53,10 +53,14 @@ class MoviePhotosView(DetailView):
 
 
 class AddPhotoView(user_mixins.LoggedInOnlyView, FormView):
+
     model = models.Photo
     template_name = "movies/photo_create.html"
-    fields = ("caption", "files")
     form_class = forms.CreatePhotoForm
+    fields = (
+        "caption",
+        "files",
+    )
 
     def form_valid(self, form):
         pk = self.kwargs.get("pk")
@@ -66,8 +70,6 @@ class AddPhotoView(user_mixins.LoggedInOnlyView, FormView):
 
 
 def delete_photo(request, movie_pk, photo_pk):
-    user = request.user
-    movie = models.Movie.objects.get(pk=movie_pk)
 
     models.Photo.objects.filter(pk=photo_pk).delete()
     messages.success(request, "Photo Deleted")

@@ -26,4 +26,6 @@ urlpatterns = [
     path("reviews/", include("reviews.urls", namespace="reviews")),
     path("genres/", include("genres.urls", namespace="genres")),
     path("lists/", include("lists.urls", namespace="lists")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

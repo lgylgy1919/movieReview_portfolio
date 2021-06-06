@@ -10,11 +10,19 @@
     </h3>
 
     
+
     {% for photo in movie.photos.all %}
+    <div>
+        <!-- img 불러오기 : photo.files.url 로 설정해서 작동해야 함 -->
         <img src="{{main_photo}}">
         <span>{{photo.caption}}</span>
-        <a href="{% url 'movies:edit-photo' movie.pk photo.pk %}">Edit</a>
-        <a href="{% url 'movies:delete-photo' movie.pk photo.pk}">Delete</a>
+        <h4>
+            <a href="{% url 'movies:edit-photo' movie.pk photo.pk %}">Edit</a>
+        </h4>
+        <h4>
+            <a href="{% url 'movies:delete-photo' movie.pk photo.pk %}">Delete</a>
+        </h4>
+    </div>
     {% endfor %}
 
     <h3>
