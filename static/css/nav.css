@@ -1,0 +1,12 @@
+.nav_box {
+}
+.nav_link {
+  justify-content: center;
+  background-color: aqua;
+  color: red;
+}
+
+li {
+  background-color: aqua;
+  color: red;
+}

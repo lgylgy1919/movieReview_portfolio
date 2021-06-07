@@ -33,3 +33,4 @@ class CreatePhotoForm(forms.ModelForm):
         movie = models.Movie.objects.get(pk=pk)
         photo.movie = movie
         photo.save()
+        return photo

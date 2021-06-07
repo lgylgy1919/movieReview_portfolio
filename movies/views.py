@@ -52,20 +52,16 @@ class MoviePhotosView(DetailView):
         return movie
 
 
-class AddPhotoView(user_mixins.LoggedInOnlyView, FormView):
+class AddPhotoView(FormView):
 
     model = models.Photo
     template_name = "movies/photo_create.html"
+    fields = ("caption", "files")
     form_class = forms.CreatePhotoForm
-    fields = (
-        "caption",
-        "files",
-    )
 
     def form_valid(self, form):
         pk = self.kwargs.get("pk")
         form.save(pk)
-        messages.success(self.request, "Photo Uploaded")
         return redirect(reverse("movies:photos", kwargs={"pk": pk}))
 
 

@@ -9,12 +9,14 @@
         <a href="{% url 'movies:add-photo' movie.pk %}">Upload Photo</a>
     </h3>
 
+    {%if movie.photos.all %}
+    <h3> Enroll New Poster!! </h3>
+    {% else %}
     
 
     {% for photo in movie.photos.all %}
     <div>
-        <!-- img 불러오기 : photo.files.url 로 설정해서 작동해야 함 -->
-        <img src="{{main_photo}}">
+        <img src="{{photo.files.url}}">
         <span>{{photo.caption}}</span>
         <h4>
             <a href="{% url 'movies:edit-photo' movie.pk photo.pk %}">Edit</a>
@@ -25,6 +27,7 @@
     </div>
     {% endfor %}
 
+    {% endif %}
     <h3>
         <a href="{% url 'movies:movieEdit' movie.pk %}"> Back to edit Movie</a>
     </h3>
