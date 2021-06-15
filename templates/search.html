@@ -7,8 +7,19 @@
 
 
     {% for movie in movies %}
-    <a href="{% url 'movies:movieDetail' movie.pk %}">
-        <h3>{{movie.title}}</h3>
-    </a>
+    <div class="movie-card">
+        <a href="{% url 'movies:movieDetail' movie.pk %}">
+            <ul>
+                <div>
+                    <span>{{movie.title}}</span>
+                    <span>{{movie.release_date}}</span>
+                </div>
+                <div>{{movie.total_rating}}</div>
+                <div>{{movie.director}}</div>
+                <div>{{movie.cast}}</div>
+                    
+            </ul>
+        </a>
+        </div>
     {% endfor %}
 {% endblock content%}

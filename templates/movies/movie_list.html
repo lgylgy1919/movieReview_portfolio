@@ -3,9 +3,9 @@
 {% block content %}
     <h5>it's movie_list html</h5>
     <h3>Movie List</h3>
-
+   <div class="movie-list">
     {% for movie in movies %}
         {% include 'mixins/movie_card.html' with movie=movie %}
     {% endfor %}
-
+    </div>
 {% endblock content%}

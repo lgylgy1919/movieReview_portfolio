@@ -1,10 +1,14 @@
+<div class="movie-card">
 <a href="{% url 'movies:movieDetail' movie.pk %}">
     <ul>
-        <li>{{movie.title}}</li>
-        <li>{{movie.genre}}</li>
-        <li>{{movie.director}}</li>
-        <li>{{movie.release_date}}</li>
-        <li>{{movie.total_rating}}</li>
+        <div>
+            <span>{{movie.title}}</span>
+            <span>{{movie.release_date}}</span>
+        </div>
+        <div>{{movie.total_rating}}</div>
+        <div>{{movie.director}}</div>
+        <div>{{movie.cast}}</div>
             
     </ul>
 </a>
+</div>

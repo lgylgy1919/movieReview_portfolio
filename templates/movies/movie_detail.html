@@ -14,11 +14,13 @@
     <h3>director : {{movie.director}}</h3>
     <h3>cast : {{movie.cast}}</h3>
     <h3>synopsis : {{movie.synopsis}}</h3>
-
-    {% for genre in movie.genre.all %}
-        <h3>genre : {{genre}} </h3>
-    {% endfor %}
-    
+    <h3>
+        genre :
+        {% for genre in movie.genre.all %}
+            {{genre}} ,
+        {% endfor %}
+        
+    </h3>
     <h3>Reviews</h3>
     <h3>total_rating : {{movie.total_rating}}</h3>
 
