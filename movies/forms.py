@@ -1,6 +1,7 @@
 from django import forms
 from . import models
 from genres import models as genre_models
+from django.forms.widgets import NumberInput
 
 
 class SearchForm(forms.Form):
@@ -14,6 +15,7 @@ class CreateMovieForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=True,
     )
+    release_date = forms.DateField(widget=NumberInput(attrs={"type": "date"}))
 
     class Meta:
         model = models.Movie
