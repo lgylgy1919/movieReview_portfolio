@@ -1,5 +1,6 @@
 from django import forms
 from . import models
+from genres import models as genre_models
 
 
 class SearchForm(forms.Form):
@@ -7,6 +8,13 @@ class SearchForm(forms.Form):
 
 
 class CreateMovieForm(forms.ModelForm):
+
+    genre = forms.ModelMultipleChoiceField(
+        queryset=genre_models.Genre.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True,
+    )
+
     class Meta:
         model = models.Movie
         fields = (

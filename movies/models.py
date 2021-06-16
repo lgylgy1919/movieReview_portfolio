@@ -32,12 +32,12 @@ class Movie(core_models.TimeStampedModel):
 
     """ Movie model Definition """
 
-    title = models.CharField(max_length=30, null=True, default=True)
+    title = models.CharField(max_length=30, null=True, default="Title")
     genre = models.ManyToManyField("genres.Genre", related_name="movie", blank=True)
     release_date = models.DateField(null=True)
-    director = models.CharField(max_length=30, null=True, default=True)
-    cast = models.TextField()
-    synopsis = models.TextField()
+    director = models.CharField(max_length=30, null=True, default="Derector")
+    cast = models.CharField(max_length=100, null=True, default="cast")
+    synopsis = models.TextField(default="Synopsis")
 
     def total_rating(self):
         all_reviews = self.reviews.all()

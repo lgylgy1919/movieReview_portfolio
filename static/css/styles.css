@@ -5,3 +5,10 @@
 * {
   box-sizing: border-box;
 }
+
+button {
+  color: cadetblue;
+}
+form {
+  justify-content: center;
+}
